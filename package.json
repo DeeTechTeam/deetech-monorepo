@@ -4,11 +4,14 @@
     "dev": "bun run --hot src/index.ts"
   },
   "dependencies": {
+    "@hono/swagger-ui": "^0.4.1",
     "@hono/zod-validator": "^0.3.0",
     "@prisma/client": "5.20.0",
     "@types/bcrypt": "^5.0.2",
+    "@types/swagger-jsdoc": "^6.0.4",
     "bcrypt": "^5.1.1",
     "hono": "^4.6.3",
+    "swagger-jsdoc": "^6.2.8",
     "zod": "^3.23.8"
   },
   "devDependencies": {
