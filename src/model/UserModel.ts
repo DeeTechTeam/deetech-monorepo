@@ -11,7 +11,7 @@ const User = t.Object({
 })
 
 const login = t.Object({
-    email: t.String(),
+    email: User.sh,
     password: t.String(),
 })
 
