@@ -18,7 +18,7 @@ export default async function LoginUsecase(c: Context, data: UserModel.Login) {
             user,
             exp: Math.floor(Date.now() / 1000) + 60 * 60 * 24
         }
-        const token = await sign(payload, process.env.SECRET_KEY as string)
+        const token = await sign(payload, process.env.JWT_SECRET as string)
 
         return response(c, 200, "Login successfully", { token })
     } catch (error:any) {
