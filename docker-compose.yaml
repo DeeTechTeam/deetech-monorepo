@@ -1,0 +1,32 @@
+version: '3.8'
+
+services:
+  # Layanan PostgreSQL
+  db:
+    image: postgres:13
+    container_name: postgres_db
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB}
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    ports:
+      - "30000:5432"
+
+  # Layanan aplikasi Anda
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: your_app
+    environment:
+      DATABASE_URL: ${DATABASE_URL}
+      JWT_SECRET: ${JWT_SECRET}
+    ports:
+      - "20000:3000"
+    depends_on:
+      - db
+
+volumes:
+  postgres_data:
