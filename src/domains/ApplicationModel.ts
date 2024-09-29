@@ -12,17 +12,16 @@ export const ApplicationModel = z.object({
 export const CreateApplicationModel = ApplicationModel.pick({
     name: true,
     description: true,
-    url: true,
-})
+    url: true
+});
 
 export const UpdateApplicationModel = ApplicationModel.pick({
     name: true,
     description: true,
     url: true,
-})
+});
 
-
-export type CreateApplicationModel = z.infer<typeof CreateApplicationModel>
-export type UpdateApplicationModel = z.infer<typeof UpdateApplicationModel>
-export type ApplicationModel = z.infer<typeof ApplicationModel>
+export type CreateApplicationModel = z.infer<typeof CreateApplicationModel>;
+export type UpdateApplicationModel = z.infer<typeof UpdateApplicationModel>;
+export type ApplicationModel = z.infer<typeof ApplicationModel>;
 
