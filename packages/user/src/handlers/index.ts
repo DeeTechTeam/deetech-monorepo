@@ -1,5 +1,1 @@
-import AuthHandler from "./AuthHandler";
-
-export{
-    AuthHandler
-}
+export * from "./rest";

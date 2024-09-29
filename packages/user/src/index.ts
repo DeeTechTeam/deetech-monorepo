@@ -1,12 +1,15 @@
 import { Hono } from 'hono'
 import {logger} from "hono/logger"
-import { AuthHandler } from './handlers';
+import { AuthHandler } from './handlers/rest';
 import { cors } from 'hono/cors'
 
 
-const app = new Hono().basePath("/api")
+const app = new Hono()
+
 app.use(logger())
 app.use('*', cors())
+app.basePath("/api")
+
 app.get('/', (c) => {
   return c.text('Hello Hono!')
 })

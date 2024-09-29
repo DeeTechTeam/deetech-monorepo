@@ -1,7 +1,7 @@
 import { zValidator } from "@hono/zod-validator";
 import { Context, Hono } from "hono";
-import { UserModel } from "../domains";
-import { LoginUsecase, RegisterUsecase } from "../usecases";
+import { UserModel } from "../../domains";
+import { LoginUsecase, RegisterUsecase } from "../../usecases";
 
 const AuthHandler = new Hono()
 
