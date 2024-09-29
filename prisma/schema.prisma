@@ -7,12 +7,70 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model users {
+model User {
   id        String    @id @default(cuid())
   email     String    @unique
-  name      String?
+  name      String
   password  String
   createdAt DateTime  @default(now())
   updatedAt DateTime  @updatedAt
-  deletedAt DateTime?
+
+  roles UserRoles[]
+  profile Profile[]
+  @@map("users")
 }
+
+model Application{
+  id         String    @id @default(cuid())
+  name        String
+  description String
+  url         String?
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+  
+  roles Role[]
+  @@map("applications")
+}
+
+model Role{
+  id         String    @id @default(cuid())
+  application_id String
+  name        String
+  description String
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+
+  application Application @relation(fields: [application_id], references: [id])
+  users UserRoles[]
+  @@map("roles")
+}
+
+model UserRoles{
+  user_id String
+  role_id String
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+  deletedAt   DateTime?
+  @@id([user_id, role_id])
+
+  user User @relation(fields: [user_id], references: [id])
+  role Role @relation(fields: [role_id], references: [id])
+
+  @@map("user_roles")
+}
+
+model Profile{
+  id        String    @id @default(cuid())
+  user_id    String
+  photo     String?
+  bio      String?
+  date_of_birth DateTime?
+  place_of_birth String?
+  telp      String?
+  createdAt  DateTime  @default(now())
+  updatedAt  DateTime  @updatedAt
+
+  user User @relation(fields: [user_id], references: [id])
+  @@map("profiles")
+}
+
