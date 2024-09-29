@@ -1,29 +1,15 @@
 {
-  "name": "auth-service",
-  "scripts": {
-    "dev": "bun run --hot src/index.ts",
-    "start": "bun run src/index.ts",
-    "build": "bun build src/index.ts"
-  },
-  "dependencies": {
-    "@hono/swagger-ui": "^0.4.1",
-    "@hono/zod-validator": "^0.3.0",
-    "@prisma/client": "5.20.0",
-    "@types/bcrypt": "^5.0.2",
-    "@types/swagger-jsdoc": "^6.0.4",
-    "aws-sdk": "^2.1691.0",
-    "bcrypt": "^5.1.1",
-    "hono": "^4.6.3",
-    "mock-aws-s3": "^4.0.2",
-    "nock": "^13.5.5",
-    "swagger-jsdoc": "^6.2.8",
-    "zod": "^3.23.8"
-  },
+  "name": "deetech-monorepository",
+  "module": "index.ts",
+  "type": "module",
+  "private": true,
+  "workspaces": [
+    "packages/*"
+  ],
   "devDependencies": {
-    "@types/bun": "latest",
-    "prisma": "5.20.0"
+    "@types/bun": "latest"
   },
-  "trustedDependencies": [
-    "aws-sdk"
-  ]
+  "peerDependencies": {
+    "typescript": "^5.0.0"
+  }
 }
